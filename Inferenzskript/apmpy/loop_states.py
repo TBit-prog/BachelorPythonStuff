@@ -64,7 +64,7 @@ class ProcessAPMData(State):
         process.get_data(usb_data)
         print("APM Daten verarbeitet.")
         print(f"Temp {self.context.data_process_param.temperature}")
-        self.context.random_forest_param.rf_input = np.array([[data.temperature, data.iaq, data.humidity, data.volume]])
+        self.context.random_forest_param.rf_input = np.array([[data.temperature, data.iaq, data.humidity]])#, data.volume
         print(f"RF_Input nach dataprocessing:{self.context.random_forest_param.rf_input}")
         return InfereData(self.context)
 

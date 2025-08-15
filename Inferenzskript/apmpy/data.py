@@ -94,7 +94,10 @@ class DataProcessParam:
     temperature     : float     = None
     humidity        : float     = None
     volume          : float     = None
-    iaq             : int       = None
+    iaq             : float     = None
+    #trend_Temp      : float     = None
+    #trend_Hum       : float     = None
+    #trend_IAQ       : float     = None
     split_string    : str       = None
 
 
@@ -108,6 +111,10 @@ class DataProcessParam:
         self.humidity         = self.processed_data["HUM"]["Value"]
         self.volume           = self.processed_data["VOL"]["Value"]
         self.iaq              = self.processed_data["IAQ"]["Value"]
+        
+#    def generate_trend_data(self):
+
+
 
     def get_data(self, usb_data):
         self.json_formatting(usb_data)
@@ -127,8 +134,9 @@ class RandomForestParam:
 
     def extract_features(self):
         """Sicherstellen, dass Features in richtiger Reihenfolge und in"""
-        self.features = self.features[0:4]
+        self.features = self.features[0:3]
         print(self.features)
+
     def arrange_features(self):
         arr = np.array(self.rf_input).reshape(1, -1)
         self.rf_input = pd.DataFrame(arr, columns=self.features)
@@ -138,6 +146,7 @@ class RandomForestParam:
 
     def load_features(self):
         self.features = joblib.load(self.feature_path)
+        print(self.features)
 
     def infere(self):
         self.arrange_features()

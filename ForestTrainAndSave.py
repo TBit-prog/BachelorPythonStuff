@@ -4,12 +4,7 @@ import pandas as pd
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score, ConfusionMatrixDisplay
-from sklearn.model_selection import RandomizedSearchCV, train_test_split
-from scipy.stats import randint
-
-from sklearn.tree import export_graphviz
-from IPython.display import Image
-import graphviz
+from sklearn.model_selection import RandomizedSearchCV, train_test_split, cross_val_score
 
 import joblib
 
@@ -31,25 +26,46 @@ modelname   = r"\MyFirstForest.joblib"
 featurename = r"\MyFeatureNames.joblib"
  
 ##Read and Format Data
-df = pd.read_csv(path + trainingsdata)
-df = removeTimestamp(df)
+df = pd.read_csv(path + trainingsdata).iloc[:, [1,2,4,6]] # Daten laden und nur relevante Spalten aus der Datei nehmen, noch 4 für Volume
 df = removeMidHeader(df)
 
 #Input X Output Y
-X = df[["Temp", "IAQ", "Volume", "Hum"]]
+X = df[["Temp", "IAQ", "Hum"]] #"Volume",
 Y = df["Fenster_offen"]
 features = list(df.columns[:-1])
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2)
 
 #Create Random Forest Model
 rf = RandomForestClassifier()
-rf.fit(X_train, y_train)
+rf.fit(X, Y)
+scores = cross_val_score(rf, X, Y, cv = 5)
+print("Mittlere Genauigkeit:", scores.mean())
 
-#Test Prediction
+#Prediction
 prediction = rf.predict(X_test)
-accuracy = accuracy_score(y_test, prediction)
-print("Accuracy", accuracy)
+
+importances = rf.feature_importances_
+for name, val in zip(X.columns, importances):
+    print(f"{name}: {val:.3f}")
 
 #Save Model
 joblib.dump(rf, modelpath + modelname)
 joblib.dump(features, modelpath + featurename)
+
+
+"""
+
+WORKFLOW
+
+Data Collection
+Data cleaning
+Feature engineering
+Split the data
+
+Hyperparameter Tuning
+Train your models
+Make predictions
+Asses Model Performance
+
+Deployment and iteration of the process
+"""
