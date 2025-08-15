@@ -1,0 +1,1682 @@
+[
+    {
+        "id": "9e62d8a8468fe6eb",
+        "type": "tab",
+        "label": "APM: UI",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c03b585c92c55c92",
+        "type": "ui_artlessgauge",
+        "z": "9e62d8a8468fe6eb",
+        "group": "276a94a6eedd5d30",
+        "order": 3,
+        "width": 4,
+        "height": 4,
+        "name": "Temperature",
+        "icon": "",
+        "label": "Temperature",
+        "unit": "",
+        "layout": "radial",
+        "decimals": "1",
+        "differential": false,
+        "minmax": false,
+        "colorTrack": "#555555",
+        "style": "",
+        "colorFromTheme": true,
+        "property": "payload.TMP.Value",
+        "secondary": "payload.TMP.Unit",
+        "inline": true,
+        "animate": true,
+        "sectors": [
+            {
+                "val": 0,
+                "col": "#00ccff",
+                "t": "min",
+                "dot": 0
+            },
+            {
+                "val": 17,
+                "col": "#6678ff",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 20,
+                "col": "#66cc00",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 26,
+                "col": "#db6300",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 30,
+                "col": "#cc0000",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 50,
+                "col": "#cc0000",
+                "t": "max",
+                "dot": 0
+            }
+        ],
+        "lineWidth": 3,
+        "bgcolorFromTheme": true,
+        "diffCenter": "",
+        "x": 410,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "16f14412e23794d6",
+        "type": "ui_artlessgauge",
+        "z": "9e62d8a8468fe6eb",
+        "group": "276a94a6eedd5d30",
+        "order": 6,
+        "width": 4,
+        "height": 4,
+        "name": "Pressure",
+        "icon": "",
+        "label": "Pressure",
+        "unit": "",
+        "layout": "radial",
+        "decimals": "0",
+        "differential": false,
+        "minmax": false,
+        "colorTrack": "#555555",
+        "style": "",
+        "colorFromTheme": true,
+        "property": "payload.PRS.Value",
+        "secondary": "payload.PRS.Unit",
+        "inline": true,
+        "animate": true,
+        "sectors": [
+            {
+                "val": 0,
+                "col": "#cccccc",
+                "t": "min",
+                "dot": 0
+            },
+            {
+                "val": 2000,
+                "col": "#cccccc",
+                "t": "max",
+                "dot": 0
+            }
+        ],
+        "lineWidth": 3,
+        "bgcolorFromTheme": true,
+        "diffCenter": "",
+        "x": 400,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "d7808f506ef55b07",
+        "type": "ui_artlessgauge",
+        "z": "9e62d8a8468fe6eb",
+        "group": "276a94a6eedd5d30",
+        "order": 4,
+        "width": 4,
+        "height": 4,
+        "name": "Humidity",
+        "icon": "",
+        "label": "Humidity",
+        "unit": "",
+        "layout": "radial",
+        "decimals": "1",
+        "differential": false,
+        "minmax": false,
+        "colorTrack": "#555555",
+        "style": "",
+        "colorFromTheme": true,
+        "property": "payload.HUM.Value",
+        "secondary": "payload.HUM.Unit",
+        "inline": true,
+        "animate": true,
+        "sectors": [
+            {
+                "val": 0,
+                "col": "#ff3333",
+                "t": "min",
+                "dot": 0
+            },
+            {
+                "val": 30,
+                "col": "#fff266",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 40,
+                "col": "#009999",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 60,
+                "col": "#fff566",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 70,
+                "col": "#ff3333",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 80,
+                "col": "#ff3333",
+                "t": "max",
+                "dot": 0
+            }
+        ],
+        "lineWidth": 3,
+        "bgcolorFromTheme": true,
+        "diffCenter": "",
+        "x": 400,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "531d8b8b9d31ddcc",
+        "type": "ui_artlessgauge",
+        "z": "9e62d8a8468fe6eb",
+        "group": "276a94a6eedd5d30",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "name": "Breath Voc Equivalent",
+        "icon": "",
+        "label": "Breath VOC",
+        "unit": "",
+        "layout": "linear",
+        "decimals": "2",
+        "differential": false,
+        "minmax": false,
+        "colorTrack": "#555555",
+        "style": "",
+        "colorFromTheme": true,
+        "property": "payload.VOC.Value",
+        "secondary": "payload.VOC.Unit",
+        "inline": true,
+        "animate": true,
+        "sectors": [
+            {
+                "val": 0,
+                "col": "#37ff00",
+                "t": "min",
+                "dot": 0
+            },
+            {
+                "val": 3,
+                "col": "#ffeb66",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 7,
+                "col": "#990a00",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 10,
+                "col": "#990a00",
+                "t": "max",
+                "dot": 0
+            }
+        ],
+        "lineWidth": "3",
+        "bgcolorFromTheme": true,
+        "diffCenter": "",
+        "x": 440,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "485e79a6b535fe82",
+        "type": "ui_artlessgauge",
+        "z": "9e62d8a8468fe6eb",
+        "group": "276a94a6eedd5d30",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "name": "IAQ",
+        "icon": "",
+        "label": "IAQ",
+        "unit": "",
+        "layout": "linear",
+        "decimals": 0,
+        "differential": false,
+        "minmax": false,
+        "colorTrack": "#555555",
+        "style": "",
+        "colorFromTheme": true,
+        "property": "payload.IAQ.Value",
+        "secondary": "secondary",
+        "inline": false,
+        "animate": true,
+        "sectors": [
+            {
+                "val": 0,
+                "col": "#37ff00",
+                "t": "min",
+                "dot": 0
+            },
+            {
+                "val": 50,
+                "col": "#37ff00",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 100,
+                "col": "#f5ff66",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 150,
+                "col": "#990000",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 200,
+                "col": "#990000",
+                "t": "max",
+                "dot": 0
+            }
+        ],
+        "lineWidth": "7",
+        "bgcolorFromTheme": true,
+        "diffCenter": "",
+        "x": 390,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "f576e0ccab3c1fab",
+        "type": "ui_artlessgauge",
+        "z": "9e62d8a8468fe6eb",
+        "group": "276a94a6eedd5d30",
+        "order": 5,
+        "width": 4,
+        "height": 4,
+        "name": "Volume",
+        "icon": "",
+        "label": "Volume",
+        "unit": "",
+        "layout": "radial",
+        "decimals": "1",
+        "differential": false,
+        "minmax": false,
+        "colorTrack": "#555555",
+        "style": "",
+        "colorFromTheme": true,
+        "property": "payload.VOL.Value",
+        "secondary": "payload.VOL.Unit",
+        "inline": true,
+        "animate": true,
+        "sectors": [
+            {
+                "val": 0,
+                "col": "#2bff00",
+                "t": "min",
+                "dot": 0
+            },
+            {
+                "val": 55,
+                "col": "#fcff66",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 60,
+                "col": "#990000",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 100,
+                "col": "#990000",
+                "t": "max",
+                "dot": 0
+            }
+        ],
+        "lineWidth": 3,
+        "bgcolorFromTheme": true,
+        "diffCenter": "",
+        "x": 400,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "4b2c9bedf89f0a86",
+        "type": "ui_artlessgauge",
+        "z": "9e62d8a8468fe6eb",
+        "group": "276a94a6eedd5d30",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "name": "IAQ Accuracy",
+        "icon": "",
+        "label": "IAQ Accuracy",
+        "unit": "",
+        "layout": "linear",
+        "decimals": 0,
+        "differential": false,
+        "minmax": false,
+        "colorTrack": "#555555",
+        "style": "",
+        "colorFromTheme": true,
+        "property": "payload.IAQ.Acc",
+        "secondary": "secondary",
+        "inline": false,
+        "animate": true,
+        "sectors": [
+            {
+                "val": 0,
+                "col": "#e1ff00",
+                "t": "min",
+                "dot": 0
+            },
+            {
+                "val": 1,
+                "col": "#cd0404",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 2,
+                "col": "#2e0099",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 3,
+                "col": "#37ff00",
+                "t": "sec",
+                "dot": 0
+            },
+            {
+                "val": 4,
+                "col": "#37ff00",
+                "t": "max",
+                "dot": 0
+            }
+        ],
+        "lineWidth": "7",
+        "bgcolorFromTheme": true,
+        "diffCenter": "",
+        "x": 420,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "a8e9296bac5def35",
+        "type": "ui_text",
+        "z": "9e62d8a8468fe6eb",
+        "group": "276a94a6eedd5d30",
+        "order": 2,
+        "width": 8,
+        "height": 1,
+        "name": "Unique ID",
+        "label": "S/N: ",
+        "format": "{{msg.payload.UniqueId}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 400,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "ee8e7886859c8439",
+        "type": "smooth",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Round to 1 decimal places",
+        "property": "payload",
+        "action": "mean",
+        "count": "1",
+        "round": "1",
+        "mult": "single",
+        "reduce": true,
+        "x": 1120,
+        "y": 140,
+        "wires": [
+            [
+                "7e46237b630e4c9c"
+            ]
+        ]
+    },
+    {
+        "id": "ed976e9cd78588be",
+        "type": "ui_chart",
+        "z": "9e62d8a8468fe6eb",
+        "name": "IAQ Chart (72h)",
+        "group": "b3e1da4d9215f5a3",
+        "order": 1,
+        "width": 10,
+        "height": 6,
+        "label": "Air Quality Chart (72h)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "400",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1380,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7e46237b630e4c9c",
+        "type": "ui_chart",
+        "z": "9e62d8a8468fe6eb",
+        "name": "TMP Chart (72h)",
+        "group": "b3e1da4d9215f5a3",
+        "order": 2,
+        "width": 10,
+        "height": 6,
+        "label": "Temperature Chart (72h)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "10",
+        "ymax": "50",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1390,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0e3679535417ed0",
+        "type": "change",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Select IAQ Value",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.IAQ.Value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 100,
+        "wires": [
+            [
+                "f070b34a86e880bf",
+                "449592563d038fcf"
+            ]
+        ]
+    },
+    {
+        "id": "e45bdc82c9279709",
+        "type": "change",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Select TMP Value",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.TMP.Value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 140,
+        "wires": [
+            [
+                "ee8e7886859c8439",
+                "7bdbedae3aebc0f5"
+            ]
+        ]
+    },
+    {
+        "id": "85312b98655df113",
+        "type": "change",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Select Volume Value",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.VOL.Value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 180,
+        "wires": [
+            [
+                "f6e7c6352ae339a2",
+                "44ecf758bb210b74"
+            ]
+        ]
+    },
+    {
+        "id": "f6e7c6352ae339a2",
+        "type": "smooth",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Round to 1 decimal places",
+        "property": "payload",
+        "action": "mean",
+        "count": "10",
+        "round": "1",
+        "mult": "single",
+        "reduce": true,
+        "x": 1120,
+        "y": 180,
+        "wires": [
+            [
+                "40e449d3bc411895"
+            ]
+        ]
+    },
+    {
+        "id": "40e449d3bc411895",
+        "type": "ui_chart",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Volume Chart (72h)",
+        "group": "3c96f3e68cc6b8e0",
+        "order": 1,
+        "width": 10,
+        "height": 6,
+        "label": "Volume Chart (72h)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "dd HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "30",
+        "ymax": "70",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1390,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "671861bf54526a54",
+        "type": "ui_chart",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Humidity Chart (72h)",
+        "group": "3c96f3e68cc6b8e0",
+        "order": 2,
+        "width": 10,
+        "height": 6,
+        "label": "Humidity Chart (72h)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1400,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d6949fc2e23bfb78",
+        "type": "change",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Select Humidity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.HUM.Value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 220,
+        "wires": [
+            [
+                "f1155d8684b0ca44",
+                "847cabcbb35ac36c"
+            ]
+        ]
+    },
+    {
+        "id": "e7d7d7dcd9595619",
+        "type": "ui_template",
+        "z": "9e62d8a8468fe6eb",
+        "group": "276a94a6eedd5d30",
+        "name": "TresCom Logo",
+        "order": 1,
+        "width": 8,
+        "height": 3,
+        "format": "<figure>\n    <img src = \"https://www.trescom-technology.com/pics/logo_trescom.png\" />\n</figure>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 420,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "384b8607b865d3a5",
+        "type": "ui_template",
+        "z": "9e62d8a8468fe6eb",
+        "group": "276a94a6eedd5d30",
+        "name": "",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "format": "",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "spacer",
+        "x": 400,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "885a48f773618858",
+        "type": "smooth",
+        "z": "9e62d8a8468fe6eb",
+        "name": "",
+        "property": "payload",
+        "action": "mean",
+        "count": "1",
+        "round": "",
+        "mult": "single",
+        "reduce": false,
+        "x": 400,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f070b34a86e880bf",
+        "type": "smooth",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Round to 1 decimal places",
+        "property": "payload",
+        "action": "mean",
+        "count": "1",
+        "round": "1",
+        "mult": "single",
+        "reduce": true,
+        "x": 1120,
+        "y": 100,
+        "wires": [
+            [
+                "ed976e9cd78588be"
+            ]
+        ]
+    },
+    {
+        "id": "f1155d8684b0ca44",
+        "type": "smooth",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Round to 1 decimal places",
+        "property": "payload",
+        "action": "mean",
+        "count": "1",
+        "round": "1",
+        "mult": "single",
+        "reduce": true,
+        "x": 1120,
+        "y": 220,
+        "wires": [
+            [
+                "671861bf54526a54"
+            ]
+        ]
+    },
+    {
+        "id": "a8790a481f80e093",
+        "type": "debug",
+        "z": "9e62d8a8468fe6eb",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "db9166ce1c697e29",
+        "type": "link in",
+        "z": "9e62d8a8468fe6eb",
+        "name": "link in 2",
+        "links": [
+            "6064a262ccf1391b"
+        ],
+        "x": 105,
+        "y": 160,
+        "wires": [
+            [
+                "a8790a481f80e093",
+                "d0e3679535417ed0",
+                "e45bdc82c9279709",
+                "85312b98655df113",
+                "d6949fc2e23bfb78",
+                "a8e9296bac5def35",
+                "c03b585c92c55c92",
+                "16f14412e23794d6",
+                "d7808f506ef55b07",
+                "f576e0ccab3c1fab",
+                "485e79a6b535fe82",
+                "4b2c9bedf89f0a86",
+                "531d8b8b9d31ddcc",
+                "9ee06ec407af4f16"
+            ]
+        ]
+    },
+    {
+        "id": "afd9465ea4882b53",
+        "type": "csv",
+        "z": "9e62d8a8468fe6eb",
+        "name": "",
+        "spec": "rfc",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "once",
+        "multi": "one",
+        "ret": "\\r\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": false,
+        "include_null_values": "",
+        "x": 2090,
+        "y": 500,
+        "wires": [
+            [
+                "76708ab9f11cd91a",
+                "960676a312e73a29"
+            ]
+        ]
+    },
+    {
+        "id": "76708ab9f11cd91a",
+        "type": "file",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Trainingsdaten schreiben",
+        "filename": "C:\\Users\\Jeuh\\Desktop\\Projektdaten lokal\\03_Edge-Platform - Bachelorprojekt\\Software\\KI-Modelle\\Trainingsdaten\\TestData.csv",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 2290,
+        "y": 500,
+        "wires": [
+            [
+                "c3b7e9e8f2b23296"
+            ]
+        ]
+    },
+    {
+        "id": "960676a312e73a29",
+        "type": "debug",
+        "z": "9e62d8a8468fe6eb",
+        "name": "CSV-Debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2090,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "c3b7e9e8f2b23296",
+        "type": "debug",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Filewrite-Debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2500,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "52ab7c64010e357b",
+        "type": "debug",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Input Debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "449592563d038fcf",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "IAQ csv",
+        "func": "msg.payload = {\n    IAQ: msg.payload\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 300,
+        "wires": [
+            [
+                "fbac604a59f628ea"
+            ]
+        ]
+    },
+    {
+        "id": "7bdbedae3aebc0f5",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "TMP csv",
+        "func": "msg.payload = {\n    Temp: msg.payload\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 340,
+        "wires": [
+            [
+                "fbac604a59f628ea"
+            ]
+        ]
+    },
+    {
+        "id": "44ecf758bb210b74",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Volume csv",
+        "func": "msg.payload = {\n    Volume: msg.payload\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 380,
+        "wires": [
+            [
+                "fbac604a59f628ea"
+            ]
+        ]
+    },
+    {
+        "id": "847cabcbb35ac36c",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Hum csv",
+        "func": "msg.payload = {\n    Hum: msg.payload\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 420,
+        "wires": [
+            [
+                "fbac604a59f628ea"
+            ]
+        ]
+    },
+    {
+        "id": "fbac604a59f628ea",
+        "type": "join",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Create csv String",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": ",",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "",
+        "count": "7",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1250,
+        "y": 360,
+        "wires": [
+            [
+                "2dc43a33783d001e",
+                "0211b2cc3cf76b28"
+            ]
+        ]
+    },
+    {
+        "id": "2dc43a33783d001e",
+        "type": "debug",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Join Debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1250,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "780e4ce8642b9f10",
+        "type": "ui_switch",
+        "z": "9e62d8a8468fe6eb",
+        "name": "",
+        "label": "Arbeitsplatz belegt",
+        "tooltip": "",
+        "group": "b3e1da4d9215f5a3",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 770,
+        "y": 840,
+        "wires": [
+            [
+                "7f7cbad9448662cb"
+            ]
+        ]
+    },
+    {
+        "id": "6cca7ff2560c18c5",
+        "type": "debug",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Switch Debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "51fb15c04944ec49",
+        "type": "link in",
+        "z": "9e62d8a8468fe6eb",
+        "name": "link in 1",
+        "links": [
+            "3f8e0fde6076ec52"
+        ],
+        "x": 365,
+        "y": 700,
+        "wires": [
+            [
+                "7f7cbad9448662cb"
+            ]
+        ]
+    },
+    {
+        "id": "be281cdeea6015bb",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Arbeitsplatzstatus",
+        "func": "msg.payload = {\n    Arbeitsplatz_besetzt: msg.payload\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 580,
+        "wires": [
+            [
+                "fbac604a59f628ea"
+            ]
+        ]
+    },
+    {
+        "id": "7f7cbad9448662cb",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Switch function ",
+        "func": "let trigger = \"G\";\nlet status = context.get(\"switchStatus\");\nlet flowStatus = flow.get(\"switchState\", \"default\");\n\n\nif (msg.payload === \"G\") {\n    if (status !== undefined) {\n\n        return { payload: status };\n    } else {\n        return { payload: flow.get(\"switchStatus\", \"default\") };\n    }\n}\nelse {\n    context.set(\"switchStatus\", msg.payload);\n    return null;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 720,
+        "wires": [
+            [
+                "be281cdeea6015bb"
+            ]
+        ]
+    },
+    {
+        "id": "423871793443b15f",
+        "type": "comment",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Daten in Schlüssel:Wert Format für csv Node bringen",
+        "info": "",
+        "x": 1110,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "0211b2cc3cf76b28",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "sort",
+        "func": "let data = msg.payload;\nmsg.payload = {\n    Timestamp:    data.Timestamp,\n    Temp:         data.Temp,\n    IAQ:          data.IAQ,\n    Volume:       data.Volume,\n    Hum:          data.Hum,\n    VOC:          data.VOC,\n    Arbeitsplatz_besetzt: data.Arbeitsplatz_besetzt\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1470,
+        "y": 360,
+        "wires": [
+            [
+                "eff1c25945c8c255",
+                "23f0e890c4ab4c4a"
+            ]
+        ]
+    },
+    {
+        "id": "eff1c25945c8c255",
+        "type": "debug",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Sort Debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1490,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "45c5b7e8fb4f372d",
+        "type": "comment",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Objektstruktur sortieren (nicht funktional relevant)",
+        "info": "",
+        "x": 1600,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "804a132128d15586",
+        "type": "ui_switch",
+        "z": "9e62d8a8468fe6eb",
+        "name": "",
+        "label": "Trainingsdaten schreiben",
+        "tooltip": "",
+        "group": "3c96f3e68cc6b8e0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 790,
+        "y": 920,
+        "wires": [
+            [
+                "2591cd2ea78329d6"
+            ]
+        ]
+    },
+    {
+        "id": "2591cd2ea78329d6",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Trainingstate",
+        "func": "flow.set(\"trainingEnabled\", msg.payload);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1030,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "23f0e890c4ab4c4a",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Trainingsmode enable",
+        "func": "let trainingEnabled = flow.get(\"trainingEnabled\", \"default\") || false;\n\nif(trainingEnabled){\n    return msg;\n} else {\n    return null;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1960,
+        "y": 420,
+        "wires": [
+            [
+                "afd9465ea4882b53"
+            ]
+        ]
+    },
+    {
+        "id": "001c7f64ad3c4837",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Switch set 0 at start",
+        "func": "flow.set(\"trainingEnabled\", false, \"default\");\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1490,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "774fa43b37630da6",
+        "type": "inject",
+        "z": "9e62d8a8468fe6eb",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1250,
+        "y": 840,
+        "wires": [
+            [
+                "001c7f64ad3c4837"
+            ]
+        ]
+    },
+    {
+        "id": "6a76ef6b428b0105",
+        "type": "ui_ui_control",
+        "z": "9e62d8a8468fe6eb",
+        "name": "",
+        "events": "all",
+        "x": 400,
+        "y": 920,
+        "wires": [
+            [
+                "4f57f2684f6f5cf3"
+            ]
+        ]
+    },
+    {
+        "id": "4f57f2684f6f5cf3",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "ui switch reset",
+        "func": "\nreturn {\n        payload: false,\n        socketid:msg.socketid\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 920,
+        "wires": [
+            [
+                "804a132128d15586"
+            ]
+        ]
+    },
+    {
+        "id": "630beef398b15178",
+        "type": "ui_ui_control",
+        "z": "9e62d8a8468fe6eb",
+        "name": "",
+        "events": "all",
+        "x": 400,
+        "y": 840,
+        "wires": [
+            [
+                "ca0e7eb37958c6b7"
+            ]
+        ]
+    },
+    {
+        "id": "ca0e7eb37958c6b7",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "ui switch reset",
+        "func": "let saved = flow.get(\"switchStatus\", \"default\") ?? false;\n\n\nreturn {\n        payload: saved,\n        socketid:msg.socketid\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 840,
+        "wires": [
+            [
+                "780e4ce8642b9f10"
+            ]
+        ]
+    },
+    {
+        "id": "279d7dd0d9961df1",
+        "type": "inject",
+        "z": "9e62d8a8468fe6eb",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 840,
+        "wires": [
+            [
+                "525169105f13c776"
+            ]
+        ]
+    },
+    {
+        "id": "525169105f13c776",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "function 2",
+        "func": "flow.set(\"switchStatus\", 0, \"default\");\ncontext.set(\"switchStatus\", 0, \"default\");\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 840,
+        "wires": [
+            [
+                "630beef398b15178"
+            ]
+        ]
+    },
+    {
+        "id": "9ee06ec407af4f16",
+        "type": "change",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Select VOC",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.VOC.Value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 670,
+        "y": 260,
+        "wires": [
+            [
+                "9e354befb622be62",
+                "52ab7c64010e357b"
+            ]
+        ]
+    },
+    {
+        "id": "9e354befb622be62",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "VOC csv",
+        "func": "msg.payload = {\n    VOC: msg.payload\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 460,
+        "wires": [
+            [
+                "fbac604a59f628ea"
+            ]
+        ]
+    },
+    {
+        "id": "3282dc878146a86a",
+        "type": "debug",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Timestamp",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "d5da86d6aad3c7fd",
+        "type": "function",
+        "z": "9e62d8a8468fe6eb",
+        "name": "Timestamp",
+        "func": "const now = new Date();\nconst timestamp = now.toLocaleString(\"de-DE\", {\n    timeZone: \"Europe/Berlin\",\n    hour12: false\n});\nmsg.payload = {\n    Timestamp: timestamp\n}\nreturn msg;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 500,
+        "wires": [
+            [
+                "3282dc878146a86a",
+                "fbac604a59f628ea"
+            ]
+        ]
+    },
+    {
+        "id": "6cdfcf2c2e27dea5",
+        "type": "link in",
+        "z": "9e62d8a8468fe6eb",
+        "name": "link in 3",
+        "links": [
+            "3f8e0fde6076ec52"
+        ],
+        "x": 755,
+        "y": 500,
+        "wires": [
+            [
+                "d5da86d6aad3c7fd"
+            ]
+        ]
+    },
+    {
+        "id": "276a94a6eedd5d30",
+        "type": "ui_group",
+        "name": "Device 1",
+        "tab": "de39928f7533d2e8",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b3e1da4d9215f5a3",
+        "type": "ui_group",
+        "name": "History",
+        "tab": "de39928f7533d2e8",
+        "order": 5,
+        "disp": true,
+        "width": 10,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3c96f3e68cc6b8e0",
+        "type": "ui_group",
+        "name": "Charts_2",
+        "tab": "de39928f7533d2e8",
+        "order": 3,
+        "disp": true,
+        "width": 10,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "de39928f7533d2e8",
+        "type": "ui_tab",
+        "name": "APM",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]

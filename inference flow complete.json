@@ -1,0 +1,23 @@
+[
+    {
+        "id": "691ea4af64509e42",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "Schreibe Vergelciuhsdaten Fensteröffnung",
+        "func": "var fenster_status;\n\nfenster_status = flow.get(\"fenster_status\");\nmsg.payload = fenster_status;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 540,
+        "wires": [
+            [
+                "ea0cef16056187ca",
+                "4addee46c4b20fd5"
+            ]
+        ]
+    }
+]
