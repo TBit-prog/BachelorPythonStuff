@@ -1,5 +1,789 @@
 [
     {
+        "id": "7d277814790762e4",
+        "type": "tab",
+        "label": "Inference Flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "637680bc5ac2c2e6",
+        "type": "mqtt in",
+        "z": "7d277814790762e4",
+        "name": "Raw_data",
+        "topic": "APM",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "0ed795a82849f813",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "a06b8637d6d9cbbf"
+            ]
+        ]
+    },
+    {
+        "id": "f3b24b6d1ea40cac",
+        "type": "mqtt in",
+        "z": "7d277814790762e4",
+        "name": "Inference_Output",
+        "topic": "Inferenz",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "0ed795a82849f813",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "8372bf489969907b",
+                "c1373ee641465981",
+                "ea0cef16056187ca"
+            ]
+        ]
+    },
+    {
+        "id": "4addee46c4b20fd5",
+        "type": "debug",
+        "z": "7d277814790762e4",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "8372bf489969907b",
+        "type": "debug",
+        "z": "7d277814790762e4",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 140,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "a06b8637d6d9cbbf",
+        "type": "json",
+        "z": "7d277814790762e4",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 470,
+        "y": 180,
+        "wires": [
+            [
+                "4a11abd95d6e7771",
+                "45c00c295d3525b0",
+                "7c8d8bda5cf5bd51",
+                "06547e5938d6e18c",
+                "a84255f783ddd4c9"
+            ]
+        ]
+    },
+    {
+        "id": "4a11abd95d6e7771",
+        "type": "change",
+        "z": "7d277814790762e4",
+        "name": "Extract Temperature",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.TMP.Value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 140,
+        "wires": [
+            [
+                "1b23f5cb0d05e715"
+            ]
+        ]
+    },
+    {
+        "id": "45c00c295d3525b0",
+        "type": "change",
+        "z": "7d277814790762e4",
+        "name": "Extract Humidity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.HUM.Value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 180,
+        "wires": [
+            [
+                "a2f27d2b83aa19dc"
+            ]
+        ]
+    },
+    {
+        "id": "7c8d8bda5cf5bd51",
+        "type": "change",
+        "z": "7d277814790762e4",
+        "name": "Extract Indoor Air Quality (IAQ)",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.IAQ.Value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 850,
+        "y": 220,
+        "wires": [
+            [
+                "51f8112530f26783"
+            ]
+        ]
+    },
+    {
+        "id": "06547e5938d6e18c",
+        "type": "change",
+        "z": "7d277814790762e4",
+        "name": "Extract Volume",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.VOL.Value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 260,
+        "wires": [
+            [
+                "e0d53bd8d6ca92c0"
+            ]
+        ]
+    },
+    {
+        "id": "1b23f5cb0d05e715",
+        "type": "smooth",
+        "z": "7d277814790762e4",
+        "name": "Temperature round",
+        "property": "payload",
+        "action": "mean",
+        "count": "1",
+        "round": "2",
+        "mult": "single",
+        "reduce": false,
+        "x": 1270,
+        "y": 140,
+        "wires": [
+            [
+                "47023bcef5b0b213",
+                "3f84494777e53997"
+            ]
+        ]
+    },
+    {
+        "id": "a2f27d2b83aa19dc",
+        "type": "smooth",
+        "z": "7d277814790762e4",
+        "name": "Humidity round",
+        "property": "payload",
+        "action": "mean",
+        "count": "1",
+        "round": "2",
+        "mult": "single",
+        "reduce": false,
+        "x": 1260,
+        "y": 180,
+        "wires": [
+            [
+                "8d3034c2fb106637",
+                "7df036dc797a1ebc"
+            ]
+        ]
+    },
+    {
+        "id": "51f8112530f26783",
+        "type": "smooth",
+        "z": "7d277814790762e4",
+        "name": "IAQ round",
+        "property": "payload",
+        "action": "mean",
+        "count": "1",
+        "round": "2",
+        "mult": "single",
+        "reduce": false,
+        "x": 1250,
+        "y": 220,
+        "wires": [
+            [
+                "cbec8f73630fa7e7",
+                "250648fbbbfca679"
+            ]
+        ]
+    },
+    {
+        "id": "e0d53bd8d6ca92c0",
+        "type": "smooth",
+        "z": "7d277814790762e4",
+        "name": "Volume round",
+        "property": "payload",
+        "action": "mean",
+        "count": "1",
+        "round": "0",
+        "mult": "single",
+        "reduce": false,
+        "x": 1260,
+        "y": 260,
+        "wires": [
+            [
+                "8180c3743adad4d3",
+                "0b24ca0ade83a7d6"
+            ]
+        ]
+    },
+    {
+        "id": "47023bcef5b0b213",
+        "type": "ui_chart",
+        "z": "7d277814790762e4",
+        "name": "",
+        "group": "21e84529d1ab806e",
+        "order": 1,
+        "width": 18,
+        "height": 9,
+        "label": "Temperatur [°C]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "40",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1640,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8d3034c2fb106637",
+        "type": "ui_chart",
+        "z": "7d277814790762e4",
+        "name": "",
+        "group": "0dc614458856808f",
+        "order": 1,
+        "width": 18,
+        "height": 9,
+        "label": "Luftfeuchtigkeit [%]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "20",
+        "ymax": "75",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1650,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cbec8f73630fa7e7",
+        "type": "ui_chart",
+        "z": "7d277814790762e4",
+        "name": "",
+        "group": "21e84529d1ab806e",
+        "order": 2,
+        "width": 18,
+        "height": 9,
+        "label": "Luftqualität",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "300",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1630,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8180c3743adad4d3",
+        "type": "ui_chart",
+        "z": "7d277814790762e4",
+        "name": "",
+        "group": "0dc614458856808f",
+        "order": 2,
+        "width": 18,
+        "height": 9,
+        "label": "Lautstärke [dBA]",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "monotone",
+        "nodata": "",
+        "dot": false,
+        "ymin": "40",
+        "ymax": "80",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1640,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1373ee641465981",
+        "type": "ui_led",
+        "z": "7d277814790762e4",
+        "order": 6,
+        "group": "21e84529d1ab806e",
+        "width": 6,
+        "height": 1,
+        "label": "Fenster geöffnet",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 990,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "a84255f783ddd4c9",
+        "type": "link out",
+        "z": "7d277814790762e4",
+        "name": "JSON Data",
+        "mode": "link",
+        "links": [],
+        "x": 735,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "3f84494777e53997",
+        "type": "ui_gauge",
+        "z": "7d277814790762e4",
+        "name": "Temperature",
+        "group": "0dc614458856808f",
+        "order": 4,
+        "width": 9,
+        "height": 5,
+        "gtype": "gage",
+        "title": "Temperatur",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "015",
+        "max": "35",
+        "colors": [
+            "#00eefb",
+            "#00bb2f",
+            "#ca3838"
+        ],
+        "seg1": "22",
+        "seg2": "27",
+        "diff": false,
+        "className": "",
+        "x": 1630,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "250648fbbbfca679",
+        "type": "ui_gauge",
+        "z": "7d277814790762e4",
+        "name": "IAQ",
+        "group": "0dc614458856808f",
+        "order": 3,
+        "width": 9,
+        "height": 5,
+        "gtype": "gage",
+        "title": "Luftqualität",
+        "label": "IAQ-Wert",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "300",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "100",
+        "seg2": "200",
+        "diff": false,
+        "className": "",
+        "x": 1610,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "0b24ca0ade83a7d6",
+        "type": "ui_gauge",
+        "z": "7d277814790762e4",
+        "name": "Volume",
+        "group": "21e84529d1ab806e",
+        "order": 3,
+        "width": 9,
+        "height": 5,
+        "gtype": "gage",
+        "title": "Lautstärke",
+        "label": "dBA",
+        "format": "{{value}}",
+        "min": "30",
+        "max": "90",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "55",
+        "seg2": "75",
+        "diff": false,
+        "className": "",
+        "x": 1620,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "7df036dc797a1ebc",
+        "type": "ui_gauge",
+        "z": "7d277814790762e4",
+        "name": "Humidity",
+        "group": "21e84529d1ab806e",
+        "order": 4,
+        "width": 9,
+        "height": 5,
+        "gtype": "gage",
+        "title": "Luftfeuchtigkeit",
+        "label": "%",
+        "format": "{{value}}",
+        "min": "20",
+        "max": "80",
+        "colors": [
+            "#ff0000",
+            "#00c600",
+            "#ff0000"
+        ],
+        "seg1": "40",
+        "seg2": "60",
+        "diff": false,
+        "className": "",
+        "x": 1620,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "ea0cef16056187ca",
+        "type": "ui_chart",
+        "z": "7d277814790762e4",
+        "name": "",
+        "group": "0dc614458856808f",
+        "order": 2,
+        "width": 18,
+        "height": 9,
+        "label": "Fensteröffnung Zeitverlauf",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "2",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1050,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2705679b38e15ee5",
+        "type": "ui_switch",
+        "z": "7d277814790762e4",
+        "name": "",
+        "label": "Fenster geöffnet",
+        "tooltip": "",
+        "group": "21e84529d1ab806e",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "fenster_status",
+        "topicType": "flow",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 800,
+        "y": 760,
+        "wires": [
+            [
+                "3f7996a26958620c",
+                "45d3875c7bd371a2"
+            ]
+        ]
+    },
+    {
+        "id": "fe6d53fc8149e456",
+        "type": "ui_ui_control",
+        "z": "7d277814790762e4",
+        "name": "",
+        "events": "all",
+        "x": 440,
+        "y": 760,
+        "wires": [
+            [
+                "0a326691670269e1"
+            ]
+        ]
+    },
+    {
+        "id": "0a326691670269e1",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "ui switch reset",
+        "func": "let saved = flow.get(\"switchStatus\", \"default\") ?? false;\n\n\nreturn {\n        payload: saved,\n        socketid:msg.socketid\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 760,
+        "wires": [
+            [
+                "2705679b38e15ee5"
+            ]
+        ]
+    },
+    {
+        "id": "e9f2d80dd6c3096f",
+        "type": "inject",
+        "z": "7d277814790762e4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 760,
+        "wires": [
+            [
+                "7be0b3be50a07658"
+            ]
+        ]
+    },
+    {
+        "id": "7be0b3be50a07658",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "function 1",
+        "func": "flow.set(\"switchStatus\", 0, \"default\");\ncontext.set(\"switchStatus\", 0, \"default\");\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 760,
+        "wires": [
+            [
+                "fe6d53fc8149e456"
+            ]
+        ]
+    },
+    {
         "id": "691ea4af64509e42",
         "type": "function",
         "z": "7d277814790762e4",
@@ -19,5 +803,974 @@
                 "4addee46c4b20fd5"
             ]
         ]
+    },
+    {
+        "id": "11ed117c21f6dfc1",
+        "type": "inject",
+        "z": "7d277814790762e4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "4",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2",
+        "payloadType": "num",
+        "x": 350,
+        "y": 540,
+        "wires": [
+            [
+                "691ea4af64509e42"
+            ]
+        ]
+    },
+    {
+        "id": "3f7996a26958620c",
+        "type": "debug",
+        "z": "7d277814790762e4",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "45d3875c7bd371a2",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "Setze Fenster geöffnet im Flow",
+        "func": "flow.set(\"fenster_status\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f38f061f58a597f5",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 1,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "a172eb2bec97e060",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 2,
+        "width": 11,
+        "height": 1
+    },
+    {
+        "id": "f36551965fe66f63",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 3,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "dbe5ad1ae2b611d3",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 4,
+        "width": 14,
+        "height": 1
+    },
+    {
+        "id": "c62e0521982015bc",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 5,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "8cef96f14b3556e5",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 6,
+        "width": 14,
+        "height": 1
+    },
+    {
+        "id": "513475fc40a5fcd7",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 7,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "38a74b18f3c15439",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 8,
+        "width": 14,
+        "height": 1
+    },
+    {
+        "id": "d84a4a58f24de648",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 9,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "cba55efb2d713c40",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 10,
+        "width": 14,
+        "height": 1
+    },
+    {
+        "id": "2ea228db597ade01",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 11,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "c2a81c219694227a",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 12,
+        "width": 14,
+        "height": 1
+    },
+    {
+        "id": "f163cfe2fbde97c0",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 13,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "31a0c84d62c5e0cc",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 14,
+        "width": 14,
+        "height": 1
+    },
+    {
+        "id": "0efec5e0d80f5e72",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 15,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "a08956bb3e8b7624",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 16,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "0d6b8ec1df5f4752",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 17,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "3d4ccd3075ac92eb",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 18,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "076186738d65596c",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 19,
+        "width": 9,
+        "height": 1
+    },
+    {
+        "id": "b11c518fd676bb36",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 20,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "e76219e5ba388214",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 21,
+        "width": 9,
+        "height": 1
+    },
+    {
+        "id": "33dde428a6a359c6",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 22,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "3608961b06c51d1c",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 23,
+        "width": 9,
+        "height": 1
+    },
+    {
+        "id": "63da70f7e9379b8a",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 24,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "c9a02845f5d2464f",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 25,
+        "width": 9,
+        "height": 1
+    },
+    {
+        "id": "c7559b2398f1446e",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 26,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "15591b972b33a938",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 27,
+        "width": 9,
+        "height": 1
+    },
+    {
+        "id": "3a068a91a5ab5840",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 28,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "ebe86532894342eb",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 29,
+        "width": 21,
+        "height": 1
+    },
+    {
+        "id": "5e909861b7d76d63",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 30,
+        "width": 21,
+        "height": 1
+    },
+    {
+        "id": "3a94f8c2dbf3d483",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 31,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "0f325d6da5d4daad",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 32,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "591b126d22a4a807",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 33,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "cbb4ca3cf30a6851",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 34,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "7a55bb028d96831f",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 35,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "cb727b91230e3809",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 36,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "6ad5ce79fafc66de",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 37,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "a76bb57107f67b61",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 38,
+        "width": 31,
+        "height": 1
+    },
+    {
+        "id": "26dc87aed83cc80d",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 39,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "837d1ee0e926af81",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 40,
+        "width": 15,
+        "height": 1
+    },
+    {
+        "id": "fd2bff4fe3cd934b",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 41,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "2635e4c78e26dbdb",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 42,
+        "width": 15,
+        "height": 1
+    },
+    {
+        "id": "c41c4a9621f97298",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 43,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "dd524555a04bfb2e",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 44,
+        "width": 15,
+        "height": 1
+    },
+    {
+        "id": "6924e6244bfbe796",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 45,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "81ec307c6ede2e81",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 46,
+        "width": 15,
+        "height": 1
+    },
+    {
+        "id": "8097f289a77e8543",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 47,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "5d755e73db8467e1",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 48,
+        "width": 15,
+        "height": 1
+    },
+    {
+        "id": "4416c4b1250e35c0",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 49,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "93a6017d793e9b94",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 50,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "5dbbf05e777416f7",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 51,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "a5773f05a72397d1",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 52,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "3d68358cfc22cfd3",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 53,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "febb6b7ee710c366",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 54,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "b5d3f755a25ee909",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 55,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "217ad6067a8d7011",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 56,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "7b610bcc5a4eb9c7",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 57,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "4a6af3446c41e4bf",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 58,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "eb5596af4f13d674",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 59,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "29d5861d29e0429b",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 60,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "3fb2a292b0c8c344",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 61,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "7e2c193018c017f2",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 62,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "87717b5b8819628c",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 63,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "a418e347b89d717d",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 64,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "5c47e0fac5dbf483",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 65,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "633fcf65eaa915e5",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 66,
+        "width": 20,
+        "height": 1
+    },
+    {
+        "id": "055f5b78eec028f5",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 67,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "a1b1685fa593c233",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 68,
+        "width": 20,
+        "height": 1
+    },
+    {
+        "id": "7d4b58d7864227fa",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 69,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "6d9bac0ff9d14d8d",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 70,
+        "width": 20,
+        "height": 1
+    },
+    {
+        "id": "4c263945264c3cc8",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 71,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "8f656a9e50351371",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 72,
+        "width": 20,
+        "height": 1
+    },
+    {
+        "id": "e8783b7316119082",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 73,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "436b5571b3fa53d0",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 74,
+        "width": 20,
+        "height": 1
+    },
+    {
+        "id": "f567473b06d62a6f",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 75,
+        "width": 21,
+        "height": 1
+    },
+    {
+        "id": "9a7be8d33526e98e",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 76,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "27de6ef6e898ee54",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 77,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "c7040190d695b72a",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 78,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "73f10e4ba6a2f1b6",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 79,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "ad3c3665d1ed1f17",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 80,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "7f9599d0fd856a81",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 81,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "344a3a3e628055da",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 82,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "c92ff1842e6c1ec9",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "",
+        "order": 83,
+        "width": 13,
+        "height": 1
+    },
+    {
+        "id": "d48470e8b389ece0",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "21e84529d1ab806e",
+        "order": 5,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "a7deb3f309556167",
+        "type": "ui_spacer",
+        "z": "7d277814790762e4",
+        "name": "spacer",
+        "group": "21e84529d1ab806e",
+        "order": 7,
+        "width": 5,
+        "height": 1
+    },
+    {
+        "id": "0ed795a82849f813",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "21e84529d1ab806e",
+        "type": "ui_group",
+        "name": "Group 2",
+        "tab": "07012adde29c5c0e",
+        "order": 2,
+        "disp": true,
+        "width": 18
+    },
+    {
+        "id": "0dc614458856808f",
+        "type": "ui_group",
+        "name": "Group 2",
+        "tab": "07012adde29c5c0e",
+        "order": 2,
+        "disp": true,
+        "width": 18,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "07012adde29c5c0e",
+        "type": "ui_tab",
+        "name": "Inference",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
     }
 ]
