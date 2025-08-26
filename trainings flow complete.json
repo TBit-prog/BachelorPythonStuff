@@ -2,7 +2,7 @@
     {
         "id": "50df741a099ea5eb",
         "type": "tab",
-        "label": "APM: UI",
+        "label": "Trainingsflow",
         "disabled": false,
         "info": "",
         "env": []
@@ -1139,7 +1139,7 @@
         "type": "ui_switch",
         "z": "50df741a099ea5eb",
         "name": "",
-        "label": "Arbeitsplatz belegt",
+        "label": "Fenster offen",
         "tooltip": "",
         "group": "b3e1da4d9215f5a3",
         "order": 3,
@@ -1160,7 +1160,7 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 1570,
+        "x": 1550,
         "y": 880,
         "wires": [
             [
@@ -1205,15 +1205,15 @@
         "id": "2c87810417cea14a",
         "type": "function",
         "z": "50df741a099ea5eb",
-        "name": "Arbeitsplatzstatus",
-        "func": "msg.payload = {\n    Arbeitsplatz_besetzt: msg.payload\n}\nreturn msg;",
+        "name": "Fensterstatus",
+        "func": "msg.payload = {\n    Fenster_offen: msg.payload\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1810,
+        "x": 1800,
         "y": 620,
         "wires": [
             [
@@ -1256,7 +1256,7 @@
         "type": "function",
         "z": "50df741a099ea5eb",
         "name": "sort",
-        "func": "let data = msg.payload;\nmsg.payload = {\n    Timestamp:    data.Timestamp,\n    Temp:         data.Temp,\n    IAQ:          data.IAQ,\n    Volume:       data.Volume,\n    Hum:          data.Hum,\n    VOC:          data.VOC,\n    Arbeitsplatz_besetzt: data.Arbeitsplatz_besetzt\n}\nreturn msg;",
+        "func": "let data = msg.payload;\nmsg.payload = {\n    Timestamp:    data.Timestamp,\n    Temp:         data.Temp,\n    IAQ:          data.IAQ,\n    Volume:       data.Volume,\n    Hum:          data.Hum,\n    VOC:          data.VOC,\n    Fenster_offen: data.Fenster_offen\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,

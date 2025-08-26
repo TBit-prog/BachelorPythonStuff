@@ -41,13 +41,14 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 160,
-        "y": 420,
+        "x": 660,
+        "y": 440,
         "wires": [
             [
                 "8372bf489969907b",
                 "c1373ee641465981",
-                "ea0cef16056187ca"
+                "f077fbea9d2b9289",
+                "f99c1228cc0626bd"
             ]
         ]
     },
@@ -56,15 +57,15 @@
         "type": "debug",
         "z": "7d277814790762e4",
         "name": "debug 1",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 920,
-        "y": 640,
+        "x": 660,
+        "y": 620,
         "wires": []
     },
     {
@@ -79,8 +80,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 140,
-        "y": 580,
+        "x": 640,
+        "y": 500,
         "wires": []
     },
     {
@@ -494,8 +495,8 @@
         "shape": "circle",
         "showGlow": true,
         "name": "",
-        "x": 990,
-        "y": 420,
+        "x": 1170,
+        "y": 400,
         "wires": []
     },
     {
@@ -533,8 +534,8 @@
         "seg2": "27",
         "diff": false,
         "className": "",
-        "x": 1630,
-        "y": 360,
+        "x": 1890,
+        "y": 40,
         "wires": []
     },
     {
@@ -561,8 +562,8 @@
         "seg2": "200",
         "diff": false,
         "className": "",
-        "x": 1610,
-        "y": 440,
+        "x": 1870,
+        "y": 120,
         "wires": []
     },
     {
@@ -589,8 +590,8 @@
         "seg2": "75",
         "diff": false,
         "className": "",
-        "x": 1620,
-        "y": 480,
+        "x": 1880,
+        "y": 160,
         "wires": []
     },
     {
@@ -617,8 +618,8 @@
         "seg2": "60",
         "diff": false,
         "className": "",
-        "x": 1620,
-        "y": 400,
+        "x": 1880,
+        "y": 80,
         "wires": []
     },
     {
@@ -659,7 +660,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1050,
+        "x": 1550,
         "y": 460,
         "wires": [
             []
@@ -787,7 +788,7 @@
         "id": "691ea4af64509e42",
         "type": "function",
         "z": "7d277814790762e4",
-        "name": "Schreibe Vergelciuhsdaten Fensteröffnung",
+        "name": "Schreibe Vergleichsdaten Fensteröffnung",
         "func": "var fenster_status;\n\nfenster_status = flow.get(\"fenster_status\");\nmsg.payload = fenster_status;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -795,12 +796,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 790,
-        "y": 540,
+        "x": 740,
+        "y": 580,
         "wires": [
             [
-                "ea0cef16056187ca",
-                "4addee46c4b20fd5"
+                "4addee46c4b20fd5",
+                "4d291f6c00962c5f"
             ]
         ]
     },
@@ -808,7 +809,7 @@
         "id": "11ed117c21f6dfc1",
         "type": "inject",
         "z": "7d277814790762e4",
-        "name": "",
+        "name": "Trigger Vergleichsdaten",
         "props": [
             {
                 "p": "payload"
@@ -821,8 +822,8 @@
         "topic": "",
         "payload": "2",
         "payloadType": "num",
-        "x": 350,
-        "y": 540,
+        "x": 290,
+        "y": 580,
         "wires": [
             [
                 "691ea4af64509e42"
@@ -834,15 +835,15 @@
         "type": "debug",
         "z": "7d277814790762e4",
         "name": "debug 3",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1020,
-        "y": 920,
+        "x": 1080,
+        "y": 820,
         "wires": []
     },
     {
@@ -861,6 +862,381 @@
         "y": 760,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "f077fbea9d2b9289",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "Collecting results",
+        "func": "let data = msg.payload\n\nmsg.payload = {\n    Fenster_real:   data,\n    Fenster_mess:   flow.get(\"fenster_status\")\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 580,
+        "wires": [
+            [
+                "7d0b2f94897150cc"
+            ]
+        ]
+    },
+    {
+        "id": "9dcb8be71b98ee54",
+        "type": "debug",
+        "z": "7d277814790762e4",
+        "name": "Ergebnisse",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1530,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "784d07db6f88ea14",
+        "type": "csv",
+        "z": "7d277814790762e4",
+        "name": "",
+        "spec": "rfc",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "once",
+        "multi": "one",
+        "ret": "\\r\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 1850,
+        "y": 580,
+        "wires": [
+            [
+                "9665198fbfb899ec",
+                "fa9ecd877287457a"
+            ]
+        ]
+    },
+    {
+        "id": "9665198fbfb899ec",
+        "type": "file",
+        "z": "7d277814790762e4",
+        "name": "Write results to file",
+        "filename": "C:\\Users\\Jeuh\\Desktop\\Projektdaten lokal\\03_Edge-Platform - Bachelorprojekt\\Software\\KI-Modelle\\Ergebnisdaten\\Result.csv",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 2070,
+        "y": 580,
+        "wires": [
+            [
+                "ec79c5d6974321b4"
+            ]
+        ]
+    },
+    {
+        "id": "a70426b66846c1dc",
+        "type": "ui_switch",
+        "z": "7d277814790762e4",
+        "name": "",
+        "label": "Ergebnisse mitschreiben",
+        "tooltip": "",
+        "group": "21e84529d1ab806e",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "writeEnabled",
+        "topicType": "flow",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 830,
+        "y": 920,
+        "wires": [
+            [
+                "56e8f5d67992b8c6"
+            ]
+        ]
+    },
+    {
+        "id": "a28c20440d831775",
+        "type": "ui_ui_control",
+        "z": "7d277814790762e4",
+        "name": "",
+        "events": "all",
+        "x": 440,
+        "y": 920,
+        "wires": [
+            [
+                "27f59f86d8aaf6ce"
+            ]
+        ]
+    },
+    {
+        "id": "27f59f86d8aaf6ce",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "ui switch reset",
+        "func": "let saved = flow.get(\"switchStatus\", \"default\") ?? false;\n\n\nreturn {\n        payload: saved,\n        socketid:msg.socketid\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 920,
+        "wires": [
+            [
+                "a70426b66846c1dc"
+            ]
+        ]
+    },
+    {
+        "id": "8c32a1dc0cc8604d",
+        "type": "inject",
+        "z": "7d277814790762e4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 920,
+        "wires": [
+            [
+                "751523ccd92ace20"
+            ]
+        ]
+    },
+    {
+        "id": "751523ccd92ace20",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "function 3",
+        "func": "flow.set(\"switchStatus\", 0, \"default\");\ncontext.set(\"switchStatus\", 0, \"default\");\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 920,
+        "wires": [
+            [
+                "a28c20440d831775"
+            ]
+        ]
+    },
+    {
+        "id": "56e8f5d67992b8c6",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "Setze writeEnabled im Flow",
+        "func": "flow.set(\"writeEnabled\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1140,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7d0b2f94897150cc",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "Write Mode enable",
+        "func": "let writeEnabled = flow.get(\"writeEnabled\", \"default\") || false;\n\nif (writeEnabled){\n    return msg;\n}else{\n    return null;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1630,
+        "y": 580,
+        "wires": [
+            [
+                "784d07db6f88ea14",
+                "797c44f4a6429d87"
+            ]
+        ]
+    },
+    {
+        "id": "797c44f4a6429d87",
+        "type": "debug",
+        "z": "7d277814790762e4",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1860,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "fa9ecd877287457a",
+        "type": "debug",
+        "z": "7d277814790762e4",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2060,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "ec79c5d6974321b4",
+        "type": "debug",
+        "z": "7d277814790762e4",
+        "name": "debug 6",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2060,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "f99c1228cc0626bd",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "function 4",
+        "func": "msg.payload = {inference:msg.payload};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 440,
+        "wires": [
+            [
+                "a08d611233fbad69"
+            ]
+        ]
+    },
+    {
+        "id": "4d291f6c00962c5f",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "function 5",
+        "func": "msg.payload = {real:msg.payload};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 480,
+        "wires": [
+            [
+                "a08d611233fbad69"
+            ]
+        ]
+    },
+    {
+        "id": "a08d611233fbad69",
+        "type": "join",
+        "z": "7d277814790762e4",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1170,
+        "y": 460,
+        "wires": [
+            [
+                "da729f227cae1f27"
+            ]
+        ]
+    },
+    {
+        "id": "da729f227cae1f27",
+        "type": "function",
+        "z": "7d277814790762e4",
+        "name": "function 6",
+        "func": "let msg1 = {payload: msg.payload.inference, topic: \"inference\"};\nlet msg2 = {payload: msg.payload.real, topic: \"real\" };\n\nnode.send(msg1);\nnode.send(msg2);\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1320,
+        "y": 460,
+        "wires": [
+            [
+                "ea0cef16056187ca",
+                "9dcb8be71b98ee54"
+            ]
         ]
     },
     {
