@@ -18,15 +18,14 @@ def removeTimestamp(df):
         df = df.drop(columns=["Timestamp"])
     return df
 
-path = r"C:\Users\Jeuh\Desktop\Projektdaten lokal\03_Edge-Platform - Bachelorprojekt\Software\KI-Modelle\Trainingsdaten"
-trainingsdata = r"\TestData.csv"
-
-modelpath   = r"C:\Users\Jeuh\Desktop\Projektdaten lokal\03_Edge-Platform - Bachelorprojekt\Software\KI-Modelle\Modelle\Random Forest"
-modelname   = r"\MyFirstForest.joblib"
-featurename = r"\MyFeatureNames.joblib"
+#Paths
+root_loc         = r"C:\Users\Jeuh\Desktop\Projektdaten lokal\03_Edge-Platform - Bachelorprojekt\Software\KI-Modelle"
+data_loc         = r"\Trainingsdaten\TestData.csv"   
+model_loc        = r"\Modelle\Random Forest\MyFirstForest.joblib" 
+feature_loc      = r"\Modelle\Random Forest\MyFeatureNames.joblib"
  
 ##Read and Format Data
-df = pd.read_csv(path + trainingsdata).iloc[:, [1,2,4,6]] # Daten laden und nur relevante Spalten aus der Datei nehmen, noch 4 für Volume
+df = pd.read_csv(root_loc + data_loc).iloc[:, [1,2,4,6]] # Daten laden und nur relevante Spalten aus der Datei nehmen, noch 4 für Volume
 df = removeMidHeader(df)
 
 #Input X Output Y
@@ -49,8 +48,8 @@ for name, val in zip(X.columns, importances):
     print(f"{name}: {val:.3f}")
 
 #Save Model
-joblib.dump(rf, modelpath + modelname)
-joblib.dump(features, modelpath + featurename)
+joblib.dump(rf, root_loc + model_loc)
+joblib.dump(features, root_loc + feature_loc)
 
 
 """
