@@ -38,6 +38,7 @@ while True:
         response = ser.readline().decode("utf-8").strip()
 
     #JSON Formatieren
+    print(response)
     json_str = response.split('"UniqueId":"0x287681FFFEE2AFEA",')[-1]
     json_complete = "{" + json_str
     data = json.loads(json_complete)
@@ -49,7 +50,7 @@ while True:
     VOC = data["VOC"]["Value"]
 
     #Daten in ein numpy Array umwandeln
-    daten = np.array([[Temp, IAQ, Hum, VOC]])
+    daten = np.array([[Temp, IAQ, Hum]])
 
     # Vorhersage machen
     vorhersage = model.predict(daten)
