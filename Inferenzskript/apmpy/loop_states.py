@@ -63,9 +63,9 @@ class ProcessAPMData(State):
         data     = self.context.data_process_param
         process.get_data(usb_data)
         print("APM Daten verarbeitet.")
-        print(f"Temp {self.context.data_process_param.temperature}")
+        #print(f"Temp {self.context.data_process_param.temperature}")
         self.context.random_forest_param.rf_input = np.array([[data.temperature, data.iaq, data.humidity]])#, data.volume
-        print(f"RF_Input nach dataprocessing:{self.context.random_forest_param.rf_input}")
+        #print(f"RF_Input nach dataprocessing:{self.context.random_forest_param.rf_input}")
         return InfereData(self.context)
 
 
@@ -74,7 +74,7 @@ class InfereData(State):
         self.context = context
 
     def next(self):
-        print(f"RF_input: {self.context.random_forest_param.rf_input}")
+        #print(f"RF_input: {self.context.random_forest_param.rf_input}")
         rf  = self.context.random_forest_param
         rf.infere()
         print("Inferenz durchgeführt.")
